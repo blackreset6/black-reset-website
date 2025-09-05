@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACK RESET - Reset is Rebirth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating squares background -->
+    <div class="floating-squares">
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+        <div class="square">⬛</div>
+    </div>
+
+    <div class="container">
+        <!-- Live Data Indicator -->
+        <div class="live-data-indicator">
+            <span class="live-dot"></span>
+            <span class="live-text">LIVE DATA</span>
+            <span class="updated-time">Updated: <span id="currentTime">11:14:20 PM</span></span>
+        </div>
+
+        <!-- Main Title -->
+        <header class="main-header">
+            <h1 class="main-title">
+                <span class="black-text">BLACK</span>
+                <span class="reset-text">RESET</span>
+            </h1>
+            <p class="tagline">"Every reset is not an end but a return to first principles"</p>
+        </header>
+
+        <!-- Token Metrics Cards -->
+        <div class="metrics-grid">
+            <div class="metric-card price-card">
+                <div class="metric-value green">$0.000011</div>
+                <div class="metric-label">PRICE</div>
+            </div>
+            <div class="metric-card market-cap-card">
+                <div class="metric-value blue">$11.0K</div>
+                <div class="metric-label">MARKET CAP</div>
+            </div>
+            <div class="metric-card volume-card">
+                <div class="metric-value purple">$42.8K</div>
+                <div class="metric-label">24H VOLUME</div>
+            </div>
+            <div class="metric-card change-card">
+                <div class="metric-value green">+79.85%</div>
+                <div class="metric-label">24H CHANGE</div>
+            </div>
+        </div>
+
+        <!-- Second Row Metrics -->
+        <div class="metrics-grid secondary">
+            <div class="metric-card holders-card">
+                <div class="metric-value white">60</div>
+                <div class="metric-label">HOLDERS</div>
+            </div>
+            <div class="metric-card txs-card">
+                <div class="metric-value white">$501</div>
+                <div class="metric-label">24H TXS</div>
+            </div>
+            <div class="metric-card buys-card">
+                <div class="metric-value green">$290</div>
+                <div class="metric-label">BUYS</div>
+            </div>
+            <div class="metric-card sells-card">
+                <div class="metric-value red">$211</div>
+                <div class="metric-label">SELLS</div>
+            </div>
+        </div>
+
+        <!-- Heart Emoji Section -->
+        <div class="heart-section">
+            <span class="heart-emoji">⬛🖤</span>
+        </div>
+
+        <!-- Philosophy Section -->
+        <section class="philosophy-section">
+            <h2>THE PHILOSOPHY OF BLACK RESET</h2>
+            <p>BLACK RESET rises from the ashes of rugs and broken promises. In a world where crypto has lost its way, we return to first principles. Every reset is not an end—it's a return to what matters: conviction, transparency, and building something real.</p>
+            
+            <div class="philosophy-badges">
+                <span class="badge">🛡️ ANTI-RUG</span>
+                <span class="badge">💎 REAL CONVICTION</span>
+                <span class="badge">🔄 RESET PROTOCOL</span>
+            </div>
+        </section>
+
+        <!-- Contract Section -->
+        <section class="contract-section">
+            <h3>CONTRACT INFORMATION</h3>
+            <p class="contract-subtitle">Verified on Solana • Pump.fun Launch • Real-Time Data</p>
+            
+            <div class="contract-address-section">
+                <h4>CONTRACT ADDRESS</h4>
+                <div class="contract-address-container">
+                    <span class="contract-address" id="contractAddress">68XqzndaWDDT6s8WRGHsmLhFXNiyWtjpMyPj9GPppump</span>
+                    <button class="copy-btn" onclick="copyContract()">Copy Contract Address</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why BLACK RESET Matters -->
+        <section class="why-section">
+            <h2>WHY BLACK RESET MATTERS</h2>
+            
+            <div class="why-cards">
+                <div class="why-card">
+                    <div class="why-icon">🔄</div>
+                    <h3>RESET PROTOCOL</h3>
+                    <p>Every reset is rebirth. We're returning crypto to its core principles of decentralization and community.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">🛡️</div>
+                    <h3>ANTI-SCAM MISSION</h3>
+                    <p>Tired of daily rugs? We're building a movement that proves conviction can survive deception.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">💎</div>
+                    <h3>DIAMOND HANDS</h3>
+                    <p>Patience outlives chaos. Join holders who believe in building something that lasts.</p>
+                </div>
+            </div>
+            
+            <div class="heart-section">
+                <span class="heart-emoji">⬛🖤⬛</span>
+            </div>
+        </section>
+
+        <!-- Join the Reset -->
+        <section class="join-section">
+            <h2>JOIN THE RESET</h2>
+            <p>Be part of the movement that's bringing conviction back to crypto. BLACK RESET isn't just a token—it's a statement that real builders still exist.</p>
+            
+            <div class="action-buttons">
+                <a href="https://pump.fun/68XqzndaWDDT6s8WRGHsmLhFXNiyWtjpMyPj9GPppump" target="_blank" class="btn btn-primary">Buy on Pump.fun</a>
+                <a href="https://dexscreener.com/solana/68XqzndaWDDT6s8WRGHsmLhFXNiyWtjpMyPj9GPppump" target="_blank" class="btn btn-secondary">View Live Chart</a>
+            </div>
+            
+            <p class="disclaimer">Real-time data • Live updates every 30 seconds • Authentic conviction</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>BLACK RESET © 2024 | Reset is Rebirth | Live Data Powered by DexScreener</p>
+            <p class="footer-tagline">⬛🖤 Every reset is not an end but a return to first principles 🖤⬛</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
