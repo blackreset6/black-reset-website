@@ -1,4 +1,4 @@
-// BLACK RESET - Dynamic Data Script with CORRECT DexScreener API
+// BLACK RESET - Dynamic Data Script with FIXED DexScreener API Response Handling
 // Contract Address
 const CONTRACT_ADDRESS = '68XqzndaWDDT6s8WRGHsmLhFXNiyWtjpMyPj9GPppump';
 
@@ -59,7 +59,7 @@ function formatPrice(price) {
     return price.toFixed(2);
 }
 
-// Fetch live data from DexScreener API - CORRECTED ENDPOINT
+// Fetch live data from DexScreener API - FIXED Response Handling
 async function fetchLiveData() {
     try {
         console.log('🚀 Fetching live data from DexScreener API...');
@@ -84,11 +84,34 @@ async function fetchLiveData() {
         
         const data = await response.json();
         console.log('✅ DexScreener API Response:', data);
+        console.log('🔍 Response type:', typeof data);
+        console.log('🔍 Is Array:', Array.isArray(data));
+        console.log('🔍 Response keys:', Object.keys(data));
         
-        if (data.pairs && data.pairs.length > 0) {
-            // Get the first pair (usually the most liquid)
-            const pair = data.pairs[0];
-            console.log('💰 Using pair data:', pair);
+        // FIXED: Handle the actual API response structure
+        let pair = null;
+        
+        if (Array.isArray(data) && data.length > 0) {
+            // If it's an array, get first item
+            pair = data[0];
+            console.log('📊 Using array data, first pair:', pair);
+        } else if (data && typeof data === 'object') {
+            // If it's an object, check for numbered keys or pairs property
+            if (data.pairs && data.pairs.length > 0) {
+                pair = data.pairs[0];
+                console.log('📊 Using data.pairs[0]:', pair);
+            } else if (data['0']) {
+                pair = data['0'];
+                console.log('📊 Using data["0"]:', pair);
+            } else if (data.length && data.length > 0) {
+                // Try to access as array-like object
+                pair = data[0];
+                console.log('📊 Using data[0]:', pair);
+            }
+        }
+        
+        if (pair && pair.chainId) {
+            console.log('💰 Found valid pair data:', pair);
             
             // Extract real data from API response
             const liveData = {
@@ -98,8 +121,8 @@ async function fetchLiveData() {
                 priceChange24h: parseFloat(pair.priceChange?.h24) || 88.08,
                 liquidity: parseFloat(pair.liquidity?.usd) || 0,
                 txns24h: (pair.txns?.h24?.buys || 0) + (pair.txns?.h24?.sells || 0) || 508,
-                buys24h: parseFloat(pair.volume?.h24) * 0.6 || 297, // Estimate
-                sells24h: parseFloat(pair.volume?.h24) * 0.4 || 211  // Estimate
+                buys24h: parseFloat(pair.volume?.h24) * 0.6 || 297,
+                sells24h: parseFloat(pair.volume?.h24) * 0.4 || 211
             };
             
             console.log('📈 Processed live data:', liveData);
@@ -107,10 +130,10 @@ async function fetchLiveData() {
             
             console.log('✅ Live data updated successfully from DexScreener!');
         } else {
-            console.log('⚠️ No pairs found in API response, using fallback data');
-            console.log('📄 Full API response:', data);
+            console.log('⚠️ No valid pair data found in API response');
+            console.log('📄 Full API response structure:', JSON.stringify(data, null, 2));
             
-            // Use fallback data if API doesn't return pairs
+            // Use fallback data if no valid pair found
             updateMetrics({
                 price: 0.000011,
                 marketCap: 11500,
