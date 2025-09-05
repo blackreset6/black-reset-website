@@ -115,16 +115,31 @@ body {
     letter-spacing: 4px;
     margin-bottom: 20px;
     line-height: 0.9;
+    animation: subtleBlink 3s infinite;
+}
+
+/* EXACT blinking animation like the live site */
+@keyframes subtleBlink {
+    0%, 85% {
+        opacity: 1;
+    }
+    86%, 92% {
+        opacity: 0.7;
+    }
+    93%, 100% {
+        opacity: 1;
+    }
 }
 
 .black-text {
     color: #666;
-    display: block;
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .reset-text {
     color: #ffffff;
-    display: block;
+    display: inline-block;
 }
 
 .tagline {
